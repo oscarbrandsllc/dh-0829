@@ -25,6 +25,8 @@ function showLegend(){ try{ document.getElementById('legend-section')?.classList
         const positionalFiltersContainer = document.getElementById('positional-filters');
         const tradeSimulator = document.getElementById('tradeSimulator');
         const mainContent = document.getElementById('content');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const menuToggle = document.getElementById('menuToggle');
         const pageType = document.body.dataset.page || 'welcome';
 
         // --- State ---
@@ -90,6 +92,13 @@ function showLegend(){ try{ document.getElementById('legend-section')?.classList
         positionalViewBtn?.addEventListener('click', () => setRosterView('positional'));
         depthChartViewBtn?.addEventListener('click', () => setRosterView('depth'));
         positionalFiltersContainer?.addEventListener('click', handlePositionFilter);
+
+        menuToggle?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu?.classList.toggle('hidden');
+        });
+        dropdownMenu?.addEventListener('click', (e) => e.stopPropagation());
+        document.addEventListener('click', () => dropdownMenu?.classList.add('hidden'));
         
         // --- Initialization ---
         document.addEventListener('DOMContentLoaded', async () => {
