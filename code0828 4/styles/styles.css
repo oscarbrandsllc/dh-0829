@@ -215,8 +215,50 @@
             justify-content: center;
             gap: 0.5rem;
             width: 100%;
-            overflow-x: auto; /* Allow horizontal scrolling if needed */
-            padding-bottom: 2px; /* space for scrollbar */
+            overflow: visible; /* allow dropdown to extend outside header */
+        }
+
+        /* Menu icon + dropdown */
+        .menu-wrapper {
+            position: relative;
+            flex: 0 0 auto;
+        }
+        .menu-button {
+            background: transparent;
+            border: none;
+            padding: 0.25rem;
+            cursor: pointer;
+        }
+        .menu-button svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--color-text-primary);
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--color-panel-bg);
+            border: 1px solid var(--color-panel-border);
+            border-radius: 8px;
+            margin-top: 0.25rem;
+            display: flex;
+            flex-direction: column;
+            min-width: 120px;
+            z-index: 1000;
+        }
+        .dropdown-menu.hidden {
+            display: none;
+        }
+        .dropdown-menu a {
+            padding: 0.25rem 0.5rem;
+            text-decoration: none;
+            color: var(--color-text-primary);
+            font-size: 0.7rem;
+            white-space: nowrap;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(255,255,255,0.05);
         }
         .header-row:nth-child(2), .header-row:nth-child(3) {
             border-top: 1px solid var(--color-panel-border);
@@ -239,8 +281,8 @@
         /* Row 1 */
         .username-area {
             flex-grow: 1;
-            min-width: 120px; /* prevent it from getting too small */
-            max-width: 150px;
+            min-width: 100px; /* slightly smaller to fit menu icon */
+            max-width: 120px;
             padding: .3rem;
         }
         /* Replace existing #usernameInput block with this */
