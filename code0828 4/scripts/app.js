@@ -27,6 +27,33 @@ function showLegend(){ try{ document.getElementById('legend-section')?.classList
         const mainContent = document.getElementById('content');
         const pageType = document.body.dataset.page || 'welcome';
 
+        // --- Menu Button ---
+        const menuButton = document.getElementById('menu-button');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const menuRosters = document.getElementById('menu-rosters');
+        const menuOwnership = document.getElementById('menu-ownership');
+
+        menuButton?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (dropdownMenu && !dropdownMenu.classList.contains('hidden') && !menuButton.contains(e.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+
+        menuRosters?.addEventListener('click', () => {
+            handleFetchRosters();
+            dropdownMenu.classList.add('hidden');
+        });
+
+        menuOwnership?.addEventListener('click', () => {
+            handleFetchOwnership();
+            dropdownMenu.classList.add('hidden');
+        });
+
         // --- State ---
         let state = { userId: null, leagues: [], players: {}, oneQbData: {}, sflxData: {}, currentLeagueId: null, isSuperflex: false, cache: {}, teamsToCompare: new Set(), isCompareMode: false, currentRosterView: 'positional', activePositions: new Set(), tradeBlock: {} };
         const assignedLeagueColors = new Map();

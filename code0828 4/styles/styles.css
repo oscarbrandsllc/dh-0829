@@ -1804,3 +1804,63 @@ font-weight: 500 !important;
   margin-bottom: 0.42rem;
   line-height: 1.1;
 }
+
+/* --- Menu Button and Dropdown --- */
+.menu-container {
+    position: relative;
+    display: inline-block;
+}
+
+.menu-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-button svg {
+    fill: var(--color-text-secondary);
+}
+
+.menu-button:hover svg {
+    fill: var(--color-text-primary);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-bg-light);
+    border: 1px solid var(--color-panel-border);
+    border-radius: var(--card-border-radius);
+    padding: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    z-index: 20;
+    min-width: 150px;
+}
+
+.dropdown-menu a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--card-border-radius);
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--color-panel-bg);
+    color: var(--color-text-primary);
+}
+
+.dropdown-menu.hidden {
+    display: none;
+}
+
+/* Adjust username area width */
+.username-area {
+    max-width: 120px;
+}
